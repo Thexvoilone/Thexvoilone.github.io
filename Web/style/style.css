@@ -1,0 +1,46 @@
+html, div, img, span {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}               /*使用群选择器进行页面初始化*/
+body {
+    background-color: rgb(255, 255, 255);
+}
+.logo {background: rgb(100, 100, 100);
+    text-align: center;
+    color: white;
+}                /*设置背景颜色居中*/
+.logo h1 {
+    font-size: 36px;
+    font-family: "微软雅黑";
+    padding: 10px 10px 20px 10px;
+}               /*设置文字在容器内的垂直距离*/
+.content {
+    text-align: center;
+    padding: 20px 0 20px 0;
+}               /*设置内容显示在合适的地方*/
+.content p {
+    margin: 10px 0px 20px 0px;
+    font-family: "微软雅黑";
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 30px;
+}               /*设置段落文字距离其他元素的距离*/
+.content p span {
+    color: rgb(0, 0, 0);
+}
+.content a {
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 15px 20px;
+}               /*设置超链接外观*/
+.box {
+    width: 200px;
+    border: 2px solid rgb(107, 107, 107);
+    padding: 20px 30px;
+    margin: 20px auto 20px auto;
+    background-color: rgb(60, 50, 65);
+    font-weight: bolder;
+    color: aliceblue
+;
+}
