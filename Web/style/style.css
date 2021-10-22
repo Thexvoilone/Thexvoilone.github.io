@@ -30,17 +30,17 @@ body {
     color: rgb(0, 0, 0);
 }
 .content a {
-    background: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-    padding: 15px 20px;
-}               /*设置超链接外观*/
-.box {
+    display: block;
     width: 200px;
     border: 2px solid rgb(107, 107, 107);
     padding: 20px 30px;
     margin: 20px auto 20px auto;
     background-color: rgb(60, 50, 65);
+    text-decoration: none;
+    color: ghostwhite;
     font-weight: bolder;
-    color: aliceblue
-;
+    padding: 15px 20px;
+}               /*设置超链接外观*/
+a:hover {
+    color: rgb(255, 204, 174);
 }
