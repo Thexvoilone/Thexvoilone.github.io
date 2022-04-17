@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>滚动执勤表</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function(){
+            //每月结束会导致列表重置, 确保记录每月最后一天的列表并更新列表
+            var nameLi = ["黄鑫", "徐浩", "张影寒", "沈凌轩"];
+            var dayLi = [ "星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+            var displayLi = ["不要误会~", "该执勤表为滚动执勤表", "每过一个星期", "执勤顺序就会向下移动一次",
+                             "也就是说", "不会让某个人一直在星期天执勤", "亦或是让他在特定的一天倒垃圾","我觉得我说的够清楚了",
+                             "emmmmmmm...", "看清楚了吗?", "如果没看清楚", "那我就再说一次~"];
+
+            var time = new Date();
+            var year = time.getFullYear();
+            var month = time.getMonth();
+            var day = time.getDay();
+            var date = time.getDate();
+
+            //显示当天所在星期
+            var title = `今天是${dayLi[day]}`;
+            $("h5").text(title);
+
+            //小公告播放:
+            var pos = 0;
+            display()
+            setInterval(display, 2500);
+
+            function display(){
+                $("span").text(displayLi[pos]);
+                pos++;
+
+                if(pos == (displayLi.length)){
+                    pos = 1;
+                }
+            }
+
+
+            //子元素选法1:
+            //var test = $("table tr").eq(1).children("td").eq(1).text("帅哥");
+            //console.log(test)
+
+            //子元素选法2( :nth-child(n) 选择第n个子元素 ):
+            //$(".tab tr:nth-child(2) td:nth-child(2)").text("帅哥");
+
+            var firstDay = new Date(year, month, 1).getDay();
+            var num = firstDay;                                     //num为该月的第一天所对应的星期数
+            var judgeNum = 1;                                       //judgeNum为该月的第几周
+
+            if(num == 0){
+                num = 7;
+            }
+            
+            //计算当天是该月的第几周
+            for(i=0; i<date; i++){
+                //调试代码: console.log(i+"天", num, "第"+judgeNum+"周");
+                if(num == 8){
+                    num = 1;
+                    judgeNum++;
+                }
+                num++;
+            }
+
+            console.log("最终判断数: 第",judgeNum,"周");
+
+            //列表循环
+            function test(){
+                let round = nameLi.pop();
+                let temp = [];
+                temp[0] = round;
+
+                for(i=1; i<4; i++){
+                    temp[i] = nameLi[i-1];
+                }
+                return temp
+            }
+            
+            //第n周,循环n-1次
+            for(j=0; j<(judgeNum-1); j++){
+                nameLi = test();
+            }
+
+            $(".tab tr:nth-child(2) td:nth-child(2)").text(nameLi[0]);
+            $(".tab tr:nth-child(3) td:nth-child(2)").text(nameLi[1]);
+            $(".tab tr:nth-child(4) td:nth-child(2)").text(nameLi[2]);
+            $(".tab tr:nth-child(5) td:nth-child(2)").text(nameLi[3]);
+
+            if(day == 0){
+                $(".tab tr:nth-child(5)").css("background-color", "rgb(147, 64, 9)")
+            }
+            else if(day==1 | day==2){
+                $(".tab tr:nth-child(2)").css("background-color", "rgb(147, 64, 9)")
+            }
+            else if(day==3 | day==4){
+                $(".tab tr:nth-child(3)").css("background-color", "rgb(147, 64, 9)")
+            }
+            else if(day==5 | day==6){
+                $(".tab tr:nth-child(4)").css("background-color", "rgb(147, 64, 9)")
+            }
+        })
+    </script>
+
+    <style>
+        /* body为元素 */
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+
+        body{
+            background-image: url("https://images.weserv.nl/?url=https://i0.hdslb.com/bfs/album/4eae473d354d47646d99b27d7364fc9a4a9c1a17.jpg");
+            background-size:cover;
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .display{
+            border-radius: 20px;
+            padding: 6px 50px 10px 50px;
+            margin-top: 20px;
+            background-color: rgb(14, 83, 115);
+            color: white;
+            opacity: 0.8;
+        }
+
+        .now{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            margin: 20px auto;
+            height: 100px;
+            width: 100px;
+            color: rgb(255, 255, 255);
+            background-color: rgb(113, 113, 113);
+            border-radius: 50%;
+            opacity: 0.75;
+        }
+
+        .now h5 {
+            display: block;
+        }
+
+        .tab{
+            flex:1 1 auto;
+
+            width: 80%; 
+            height: 700px;
+            border-radius: 15px;
+            margin-bottom: 60px;
+            background-color: rgb(139, 122, 30);
+            color: aliceblue;
+            opacity: 0.8;
+        }
+
+        .tab th{
+            border: 3px rgb(225, 248, 245) solid;
+            border-radius: 15px;
+        }
+
+        .tab td {
+            border: 3px rgb(225, 248, 245) solid;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .tab tr td:nth-child(1){
+            width: 50%;
+            /* color: rgb(147, 64, 9); */
+        }
+
+    </style>
+
+</head>
+<body>
+    <!-- class 为 类-->
+    <!-- <td> 为标准单元格  <tr> 为表格的一行-->
+    <!-- <caption> 为 表格标题 -->
+    
+    <span class="display"></span>
+
+    <div class="now">
+        <h5></h5>
+    </div>
+
+    <table class="tab">
+        <tr>
+            <th>时间</th><th>负责人</th>
+        </tr>
+        
+        <tr>
+            <td>星期一、二(倒垃圾)</td> <td></td>
+        </tr>
+        
+        <tr>
+            <td>星期三、四(倒垃圾)</td> <td></td>
+        </tr>
+        
+        <tr>
+            <td>星期五、六(倒垃圾)</td> <td></td>
+        </tr>
+        
+        <tr>
+            <td>星期天(倒垃圾+拖扫地)</td> <td></td>
+        </tr>
+    </table>
+
+</body>
+</html>
