@@ -1,0 +1,119 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>shell 数组和函数 | 📔My_note</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/atom-one-dark-reasonable.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('/');
+ --light-background: url('/');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@8.13.5/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="//unpkg.com/@highlightjs/cdn-assets@11.4.0/highlight.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>shell 数组和函数</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2022-11-23T09:02:36.813Z" id="date"> 2022-11-23</time></div></span><br><span>Last Update: <div class="control"><time datetime="2022-12-05T01:39:52.433Z" id="updated"> 2022-12-05</time></div></span></div></div><hr><div id="post-content"><h2 id="shell-数组和函数"><a href="#shell-数组和函数" class="headerlink" title="shell 数组和函数"></a>shell 数组和函数</h2><hr>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组: 用一个固定的字符串, 代替多个不固定的字符串</p>
+<h3 id="数组类型"><a href="#数组类型" class="headerlink" title="数组类型"></a>数组类型</h3><h4 id="普通数组"><a href="#普通数组" class="headerlink" title="普通数组"></a>普通数组</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#每个值对应一个索引</span><br>name=abcd<br><br><span class="hljs-comment">#打印对应的索引值(第一个是起始索引, 第二个是步长)</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;name:1:2&#125;</span><br><br><span class="hljs-comment">#定义数组</span><br><span class="hljs-comment">#narry: 数组名; (.. .. ..)数组元素</span><br>narry=(man woman align unknow)<br><br><span class="hljs-comment">#自定义索引</span><br>mark=([3]=bilibili [2]=voiblog [1]=TC)<br><br><span class="hljs-comment">#调用数组, [索引], [*]或[@]指选中所有索引</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;narry[*]&#125;</span><br><br><span class="hljs-comment">#查看索引(!指取反)</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;!narry[*]&#125;</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">值</th>
+<th align="center">a</th>
+<th align="center">b</th>
+<th align="center">c</th>
+<th align="center">d</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">索引</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+</tr>
+</tbody></table>
+</blockquote>
+<p>使用例:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#将指定文件的每一行作为元素赋值给pd数组</span><br>pd=(<span class="hljs-string">&#x27;cat /etc/passwd&#x27;</span>)<br><br><span class="hljs-comment">#可以一次定义一个值</span><br>narry[0]=<span class="hljs-string">&quot;myNarry&quot;</span><br><br><span class="hljs-comment">#查看数组</span><br><span class="hljs-built_in">declare</span> -a |grep &lt;数组名&gt;       <span class="hljs-comment">#declare -a 查看所有变量</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="关联数组"><a href="#关联数组" class="headerlink" title="关联数组"></a>关联数组</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#必须先声明关联数组</span><br><span class="hljs-built_in">declare</span> -A &lt;数组名&gt;<br><br><span class="hljs-comment">#自定义索引</span><br>mark=([web]=bilibili [home]=voiblog [cloud]=TC)<br><br><br><span class="hljs-comment">#调用数组元素</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;mark[web]&#125;</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">值</th>
+<th align="center">bilibili</th>
+<th align="center">voiblog</th>
+<th align="center">TC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">索引</td>
+<td align="center">web</td>
+<td align="center">home</td>
+<td align="center">cloud</td>
+</tr>
+</tbody></table>
+</blockquote>
+<p>for 定义数组:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#通过循环定义和显示数组</span><br><span class="hljs-comment">#例:</span><br><span class="hljs-comment">#!/bin/bash</span><br>num=0                       <span class="hljs-comment">#若num不声明, 则num++, num初始值为0; ++num, 初始值为1</span><br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;./test.txt&#x27;</span><br><span class="hljs-keyword">do</span><br>    line[num++]=<span class="hljs-variable">$i</span><br><span class="hljs-keyword">done</span><br><br><span class="hljs-comment">#遍历数组</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-variable">$&#123;!line[*]&#125;</span><br><span class="hljs-keyword">do</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-variable">$j</span><br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>变量 IFS, 指定分割符, 用于更改 for 循环的分隔符<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
+</blockquote>
+<hr>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>函数意为<strong>复用代码</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#函数定义</span><br><br><span class="hljs-function"><span class="hljs-title">test</span></span> () &#123; <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;这是函数&quot;</span> &#125;<br><span class="hljs-keyword">function</span> <span class="hljs-built_in">test</span> &#123; <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;另一种函数定义方法&quot;</span> &#125;<br><br><span class="hljs-comment">#函数的参数传递</span><br><span class="hljs-comment"># $1 代表传入的第一个参数, 以此类推, $n 代表第n个参数</span><br><span class="hljs-comment"># 当 n&gt;=10 时, 参数应写为 $&#123;n&#125;</span><br><span class="hljs-function"><span class="hljs-title">test</span></span> () &#123;<br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span><br>&#125;<br><br><span class="hljs-comment">#调用函数</span><br><span class="hljs-built_in">test</span> &lt;参数1&gt; &lt;参数2&gt; ...<br></code></pre></td></tr></table></figure>
+
+<p>特殊参数</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$?</td>
+<td align="center">显示最后命令的退出状态. 0表示没有错误, 其他任何值表明有错误</td>
+</tr>
+<tr>
+<td align="center">$#</td>
+<td align="center">传递到脚本或函数的参数个数</td>
+</tr>
+<tr>
+<td align="center">$*</td>
+<td align="center">以一个单字符串显示所有向脚本传递的参数</td>
+</tr>
+</tbody></table>
+<p>shift 移动参数(了解)<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup></p>
+<p>使参数产生位移</p>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">变量名尚不确定, 请查阅网络资料</span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;">了解</span><a href="#fnref:2" rev="footnote"> ↩</a></li></ol></div></div><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2022/Shell/shell_zzbds/">← Next shell 正则表达式</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2022/Shell/shell_loop/">shell循环 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://pic.voiblog.top/i/2023/09/65069e5b50c1f.png" alt="Logo"></a><h1 id="Dr"><a target="_blank" rel="noopener" href="https://www.voiblog.top/">Voilone</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#shell-%E6%95%B0%E7%BB%84%E5%92%8C%E5%87%BD%E6%95%B0"><span class="toc-text">shell 数组和函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">数组类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E6%95%B0%E7%BB%84"><span class="toc-text">普通数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E6%95%B0%E7%BB%84"><span class="toc-text">关联数组</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">蜀ICP备2022023623号-1</a></nobr><br><nobr><span class="icp-title">©</span><span class="icp-content">2022</span></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

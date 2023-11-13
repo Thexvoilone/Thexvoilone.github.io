@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>CSS Flex布局 | 📔My_note</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/atom-one-dark-reasonable.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('/');
+ --light-background: url('/');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@8.13.5/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="//unpkg.com/@highlightjs/cdn-assets@11.4.0/highlight.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>CSS Flex布局</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2022-12-05T05:10:58.607Z" id="date"> 2022-12-05</time></div></span><br><span>Last Update: <div class="control"><time datetime="2022-12-06T10:14:31.014Z" id="updated"> 2022-12-06</time></div></span></div></div><hr><div id="post-content"><h2 id="FLEX-布局"><a href="#FLEX-布局" class="headerlink" title="FLEX 布局"></a>FLEX 布局</h2><p>CSS 的一场进化</p>
+<hr>
+<h2 id="flex-概览"><a href="#flex-概览" class="headerlink" title="flex 概览"></a>flex 概览</h2><p>flexbox 是 CSS3 的一个新模块, 特别适合于元素之间的对齐.<br>flexbox 给予元素扩展和收缩的能力, 从而更好的利用显示空间.</p>
+<ul>
+<li>flex 容器(flex container)</li>
+<li>flex 项目(flex item) – flex 容器的子元素</li>
+</ul>
+<blockquote>
+<p><strong>flex 容器属性</strong><br>flex-direction—-决定主轴方向<br>justfiy-content—-决定 flex 项目如何与主轴对齐<br>align-item—-决定 flex 项目如何与副轴对齐</p>
+<hr>
+<p>flex-warp—-决定 flex 项目是否换行(在没有足够空间的情况下)<br>align-content—-仅适用于多排的 flex 项目</p>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>flex 物件</strong><br>align-self—-决定单一 flex 项目的对齐方式<br>order—-决定 flex 项目的排序</p>
+<hr>
+<p>决定 flex 项目的宽度:<br>简写: flex: 0 1 auto;<br>flex-grow—-flex 项目增长大小<br>flex-shrink—-flex 项目收缩大小<br>flex-basis—-定义 flex 项目的基本大小</p>
+</blockquote>
+<hr>
+<h2 id="Trillo-项目"><a href="#Trillo-项目" class="headerlink" title="Trillo 项目"></a>Trillo 项目</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#复制package.json到项目文件</span><br><span class="hljs-comment">#然后执行:</span><br>npm install<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="可能有用的网站"><a href="#可能有用的网站" class="headerlink" title="可能有用的网站"></a>可能有用的网站</h2><p>CodePen:<a target="_blank" rel="noopener" href="https://codepen.io/">https://codepen.io</a><br>svg 图片: <a target="_blank" rel="noopener" href="https://icomoon.io/">https://icomoon.io</a><br>贝塞尔曲线网站:<a target="_blank" rel="noopener" href="https://cubic-bezier.com/">https://cubic-bezier.com</a></p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2022/Git/git_starter/">← Next 初识Git</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2022/JavaScript/js_modal_window/">模态窗口 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://pic.voiblog.top/i/2023/09/65069e5b50c1f.png" alt="Logo"></a><h1 id="Dr"><a target="_blank" rel="noopener" href="https://www.voiblog.top/">Voilone</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#FLEX-%E5%B8%83%E5%B1%80"><span class="toc-text">FLEX 布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flex-%E6%A6%82%E8%A7%88"><span class="toc-text">flex 概览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Trillo-%E9%A1%B9%E7%9B%AE"><span class="toc-text">Trillo 项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E8%83%BD%E6%9C%89%E7%94%A8%E7%9A%84%E7%BD%91%E7%AB%99"><span class="toc-text">可能有用的网站</span></a></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">蜀ICP备2022023623号-1</a></nobr><br><nobr><span class="icp-title">©</span><span class="icp-content">2022</span></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

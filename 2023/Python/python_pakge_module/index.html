@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Python 包和模块 | 📔My_note</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/atom-one-dark-reasonable.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('/');
+ --light-background: url('/');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@8.13.5/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="//unpkg.com/@highlightjs/cdn-assets@11.4.0/highlight.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Python 包和模块</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-01-10T13:51:44.837Z" id="date"> 2023-01-10</time></div></span><br><span>Last Update: <div class="control"><time datetime="2023-01-13T08:41:54.367Z" id="updated"> 2023-01-13</time></div></span></div></div><hr><div id="post-content"><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
+<li>模块<ul>
+<li>简单来讲, 模块是单独的 py 文件</li>
+</ul>
+</li>
+<li>包<ul>
+<li>一个有层次的文件命令结构, 内部可以包含多个模块和子包</li>
+</ul>
+</li>
+<li>库<ul>
+<li>完成一定功能代码的集合</li>
+<li>可以是模块, 也可以是包</li>
+</ul>
+</li>
+</ul>
+<h2 id="包和模块"><a href="#包和模块" class="headerlink" title="包和模块"></a>包和模块</h2><h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><p><strong>模块</strong>就是 <code>.py</code> 文件</p>
+<p><strong>包</strong>的创建, 需要在目录中创建一个名为 <code>__init__.py</code> 文件<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup><br>一般都建议创建 <code>__init__.py</code> 文件</p>
+<p><code>__init__.py</code>作用:</p>
+<ul>
+<li>导入包的时候, 会自动执行 <code>__init__.py</code><br>可以做一些包的预操作</li>
+<li>导入子包</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 导入包内模块</span><br>.模块名<br></code></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="信息"><a href="#信息" class="headerlink" title="信息"></a>信息</h3><p><code>dir()</code> 方法, 返回模块拥有的 API, 具体细节网上查</p>
+<p><code>__file__</code> 特殊变量, 储存的是模块的绝对路径</p>
+<p>获取模块信息, 例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> os<br><br><span class="hljs-comment"># 模块绝对路径</span><br><span class="hljs-built_in">print</span>(os.__file__)<br><br><span class="hljs-comment"># 查看模块的API</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">dir</span>(os))<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><p>模块导入的方法并不存在内存消耗的区别</p>
+<p>模块导入时, 有其检索顺序</p>
+<ul>
+<li>第一次导入<ul>
+<li>第一级, 按内置模块顺序检索</li>
+<li>第二级<ul>
+<li>按 <code>sys.path</code>, 路径列表</li>
+<li>追加路径, …</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第二次导入</li>
+</ul>
+<p>追加路径:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> sys<br><br><span class="hljs-comment"># 将路径追加至路径列表</span><br>sys.path.append(<span class="hljs-string">&quot;C:\\Desktop\\example\\&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="常规导入"><a href="#常规导入" class="headerlink" title="常规导入"></a>常规导入</h4><p>模块导入</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 导入单个模块</span><br><span class="hljs-keyword">import</span> &lt;模块名&gt;<br><br><span class="hljs-comment"># 导入多个模块</span><br><span class="hljs-keyword">import</span> &lt;模块<span class="hljs-number">1</span>&gt;, &lt;模块<span class="hljs-number">2</span>&gt;<br><br><span class="hljs-comment"># 将模块指向变量</span><br><span class="hljs-keyword">import</span> &lt;模块&gt; <span class="hljs-keyword">as</span> &lt;变量名&gt;<br></code></pre></td></tr></table></figure>
+
+<p>包内模块导入</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> &lt;包名&gt;.&lt;模块名&gt;<br><br>...<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="from-语句"><a href="#from-语句" class="headerlink" title="from 语句"></a>from 语句</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> &lt;模块名&gt; <span class="hljs-keyword">import</span> &lt;模块API&gt;<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="导入场景"><a href="#导入场景" class="headerlink" title="导入场景"></a>导入场景</h3><h4 id="局部导入"><a href="#局部导入" class="headerlink" title="局部导入"></a>局部导入</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># os模块仅属于函数内的命名空间</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">example</span>():<br>    <span class="hljs-keyword">import</span> os<br><br><span class="hljs-comment"># 函数外无法访问</span><br><span class="hljs-built_in">print</span>(os.path)<br></code></pre></td></tr></table></figure>
+
+<h4 id="循环导入"><a href="#循环导入" class="headerlink" title="循环导入"></a>循环导入</h4><p>在模块 A 导入了模块 B<br>又在模块 B 中导入模块 A<br>引起循环导入</p>
+<p>注: <code>import</code> 语句只会运行一次</p>
+<hr>
+<h4 id="可选导入"><a href="#可选导入" class="headerlink" title="可选导入"></a>可选导入</h4><p>会遇到两个功能相近的包, 想要有个备选包<br>例如: <code>request</code> 库和 <code>aiohttp</code> 库</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">try</span>:<br>    <span class="hljs-keyword">import</span> &lt;包<span class="hljs-number">1</span>&gt;<br><span class="hljs-keyword">except</span> ModuleNotFoundError:<br>    <span class="hljs-keyword">import</span> &lt;包<span class="hljs-number">2</span>&gt;<br><br><span class="hljs-comment"># 或</span><br><span class="hljs-keyword">try</span>:<br>    <span class="hljs-keyword">import</span> &lt;包<span class="hljs-number">1</span>&gt; <span class="hljs-keyword">as</span> bao<br><span class="hljs-keyword">except</span> ModuleNotFoundError:<br>    <span class="hljs-keyword">import</span> &lt;包<span class="hljs-number">2</span>&gt; <span class="hljs-keyword">as</span> bao<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="包内导入"><a href="#包内导入" class="headerlink" title="包内导入"></a>包内导入</h4><p>包内导入分<strong>绝对导入<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup><strong>和</strong>相对导入</strong></p>
+<ul>
+<li>绝对导入:<br>通过路径列表导入</li>
+<li>相对导入:<br>通过 <code>.</code> 指代相对路径</li>
+</ul>
+<p>绝对导入:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 例</span><br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">from</span> os <span class="hljs-keyword">import</span> path<br></code></pre></td></tr></table></figure>
+
+<p>相对导入:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># &quot;.&quot; 当前目录</span><br><span class="hljs-comment"># &quot;..&quot; 上级目录</span><br><span class="hljs-keyword">import</span> .my_module<br><span class="hljs-keyword">from</span> .my_module <span class="hljs-keyword">import</span> method<br></code></pre></td></tr></table></figure>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">python 版本 &gt;= 3.3 可以不创建</span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;">适用于 python &gt;= 3.0</span><a href="#fnref:2" rev="footnote"> ↩</a></li></ol></div></div><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/Python/python_bitwise/">← Next Python 位运算</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/Python/python_lib/">Python 第三方库 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://pic.voiblog.top/i/2023/09/65069e5b50c1f.png" alt="Logo"></a><h1 id="Dr"><a target="_blank" rel="noopener" href="https://www.voiblog.top/">Voilone</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%85%E5%92%8C%E6%A8%A1%E5%9D%97"><span class="toc-text">包和模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA"><span class="toc-text">创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF"><span class="toc-text">信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5"><span class="toc-text">导入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%84%E5%AF%BC%E5%85%A5"><span class="toc-text">常规导入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#from-%E8%AF%AD%E5%8F%A5"><span class="toc-text">from 语句</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E5%9C%BA%E6%99%AF"><span class="toc-text">导入场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%AF%BC%E5%85%A5"><span class="toc-text">局部导入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E5%AF%BC%E5%85%A5"><span class="toc-text">循环导入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E9%80%89%E5%AF%BC%E5%85%A5"><span class="toc-text">可选导入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%85%E5%86%85%E5%AF%BC%E5%85%A5"><span class="toc-text">包内导入</span></a></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">蜀ICP备2022023623号-1</a></nobr><br><nobr><span class="icp-title">©</span><span class="icp-content">2022</span></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

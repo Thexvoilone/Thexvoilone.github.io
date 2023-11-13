@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>初识shell | 📔My_note</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/atom-one-dark-reasonable.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('/');
+ --light-background: url('/');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@8.13.5/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="//unpkg.com/@highlightjs/cdn-assets@11.4.0/highlight.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>初识shell</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2022-11-23T09:02:36.808Z" id="date"> 2022-11-23</time></div></span><br><span>Last Update: <div class="control"><time datetime="2022-12-05T01:40:07.610Z" id="updated"> 2022-12-05</time></div></span></div></div><hr><div id="post-content"><h2 id="初识-Shell"><a href="#初识-Shell" class="headerlink" title="初识 Shell"></a>初识 Shell</h2 class='item-img' data-src='https://pic.voiblog.top/i/2022/10/06/633e5861ac678.jpg'><img src="https://pic.voiblog.top/i/2022/10/06/633e5861ac678.jpg" height=100px>
+
+<hr>
+<h2 id="什么是-shell"><a href="#什么是-shell" class="headerlink" title="什么是 shell"></a>什么是 shell</h2><p>shell: 壳(计算机壳层), 命令解释器</p>
+<p>结构图:</p class='item-img' data-src='https://pic.voiblog.top/i/2022/10/06/633e5862ebe69.png'><img src="https://pic.voiblog.top/i/2022/10/06/633e5862ebe69.png" height=300px>
+
+<hr>
+<h2 id="第一个-shell-脚本"><a href="#第一个-shell-脚本" class="headerlink" title="第一个 shell 脚本"></a>第一个 shell 脚本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim first_shell.sh<br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Hello 2022!&quot;</span><br><span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;请输入你的姓名: &quot;</span> name<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;哈哈哈 <span class="hljs-variable">$name</span> 是帅哥&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>shell 脚本的四种执行方式:</p>
+<ol>
+<li><code>bash first_shell.sh</code></li>
+<li><code>sh first_shell.sh</code></li>
+<li><code>. first_shell.sh</code></li>
+<li><code>source first_shell.sh</code></li>
+</ol>
+<blockquote>
+<p>1 和 2 的执行方式, 是子 shell 执行(启动新的 shell 执行)<br>3 和 4 的执行方式, 是本 shell 执行</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim cd_dir.sh<br><br><span class="hljs-comment">#!/bin/bash         此为脚本声明, !为起始符, 由/bin/bash执行</span><br><span class="hljs-built_in">cd</span> ~/<br><span class="hljs-built_in">ls</span><br><span class="hljs-built_in">pwd</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="shell-变量"><a href="#shell-变量" class="headerlink" title="shell 变量"></a>shell 变量</h2><p>用一个固定的字符串去表示不固定的内容, 便于修改</p>
+<ol>
+<li><strong>自定义变量</strong><br>定义变量: <code>变量名=变量值</code><br>变量不能以数字开头<br>等号左右不能有空格</li>
+</ol>
+<p>推荐变量名命名大于 5 个字母</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#例:</span><br>name=<span class="hljs-string">&quot;handsome_boy&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>调用变量</strong><br>若需要提取变量的内容时, 需要在变量名之前加入 <strong>“$”</strong> 符号<br>可以通过 echo 命令输出变量的值</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#例:</span><br>[tourist@localhost ~]$ name=<span class="hljs-string">&quot;voilone&quot;</span><br>[tourist@localhost ~]$ <span class="hljs-built_in">echo</span> <span class="hljs-variable">$name</span><br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>变量查看</strong><br>在不知道有什么 shell 变量时, 可以进行变量查看</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span><br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><strong>变量删除</strong><br>若不想使用一个变量, 就可以删除该变量</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">unset</span> &lt;变量名&gt;<br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>编写脚本<br>然后授权脚本</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> +x &lt;脚本名&gt;        <span class="hljs-comment">#授权脚本后, 方可在本shell中执行</span><br></code></pre></td></tr></table></figure>
+
+<p>三目表达式:<br><code>&amp;&amp;</code> 和 <code>||</code> 是三目表达式<br><code>&amp;&amp;</code> 前面的命令成功, 执行后面的命令<br><code>||</code> 前面的命令失败, 执行后面的命令</p>
+<ol start="6">
+<li><strong>交互定义变量</strong><br><code>read</code> 从键盘读入变量名<br>赋值方式: <code>read 变量名</code></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;请输入你的姓名: &quot;</span> name     <span class="hljs-comment">#&quot;-p&quot;选项指打印</span><br></code></pre></td></tr></table></figure>
+
+<p>3 种引号:</p>
+<ul>
+<li><code>&quot;&quot;</code> 弱引用</li>
+<li><code>&#39;&#39;</code> 强引用</li>
+<li><code>``</code> 优先执行</li>
+</ul>
+<hr>
+<h2 id="变量运算"><a href="#变量运算" class="headerlink" title="变量运算"></a>变量运算</h2><ol>
+<li>整数运算(四种方法等同)</li>
+</ol>
+<ul>
+<li><code>expr</code></li>
+<li><code>$(())</code></li>
+<li><code>$[]</code></li>
+<li><code>let</code></li>
+</ul>
+<p><strong>expr:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#语法:</span><br><span class="hljs-built_in">expr</span> 1 + 2<br><span class="hljs-built_in">expr</span> <span class="hljs-variable">$num1</span> + <span class="hljs-variable">$num2</span><br><br><span class="hljs-comment"># + 加</span><br><span class="hljs-comment"># - 减</span><br><span class="hljs-comment"># \* 乘     (&quot;*&quot;代表任意字符, 要用&quot;\&quot;转义一下)</span><br><span class="hljs-comment"># / 除</span><br><span class="hljs-comment"># % 取余</span><br></code></pre></td></tr></table></figure>
+
+<p>脚本实例:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/usr/bin</span><br><br><span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;请输入你的第一门成绩: &quot;</span> mark1<br><span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;请输入你的第二门成绩: &quot;</span> mark2<br><span class="hljs-built_in">echo</span> -n <span class="hljs-string">&quot;总成绩是: &quot;</span>                            <span class="hljs-comment">#-n选项用于去掉回车符</span><br><span class="hljs-built_in">expr</span> <span class="hljs-variable">$mark1</span> + <span class="hljs-variable">$mark2</span><br><br></code></pre></td></tr></table></figure>
+
+<p><strong>$(()):</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#语法:</span><br><span class="hljs-built_in">echo</span> $((<span class="hljs-number">5</span>+<span class="hljs-number">2</span>))<br><span class="hljs-built_in">echo</span> $((<span class="hljs-number">2</span>**<span class="hljs-number">3</span>))<br>...<br></code></pre></td></tr></table></figure>
+
+<p><strong>$[]:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> $[5+2]<br>...<br></code></pre></td></tr></table></figure>
+
+<p><strong>let:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#常用</span><br><span class="hljs-built_in">let</span> <span class="hljs-built_in">sum</span>=2+3<br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$sum</span><br>...<br></code></pre></td></tr></table></figure>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2022/Shell/shell_judge/">← Next shell 判断</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2022/JavaScript/js_dom/">JS-DOM Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://pic.voiblog.top/i/2023/09/65069e5b50c1f.png" alt="Logo"></a><h1 id="Dr"><a target="_blank" rel="noopener" href="https://www.voiblog.top/">Voilone</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E8%AF%86-Shell"><span class="toc-text">初识 Shell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-shell"><span class="toc-text">什么是 shell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA-shell-%E8%84%9A%E6%9C%AC"><span class="toc-text">第一个 shell 脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell-%E5%8F%98%E9%87%8F"><span class="toc-text">shell 变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E8%BF%90%E7%AE%97"><span class="toc-text">变量运算</span></a></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">蜀ICP备2022023623号-1</a></nobr><br><nobr><span class="icp-title">©</span><span class="icp-content">2022</span></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

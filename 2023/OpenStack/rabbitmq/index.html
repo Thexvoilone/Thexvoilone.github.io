@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>RabbitMQ | 📔My_note</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/atom-one-dark-reasonable.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('/');
+ --light-background: url('/');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@8.13.5/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="//unpkg.com/@highlightjs/cdn-assets@11.4.0/highlight.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>RabbitMQ</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-04-25T02:46:45.758Z" id="date"> 2023-04-25</time></div></span><br><span>Last Update: <div class="control"><time datetime="2023-04-25T03:15:42.070Z" id="updated"> 2023-04-25</time></div></span></div></div><hr><div id="post-content"><h2 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mermaid">graph LR<br><br>exchanger[交换机] -.-路由键-.-&gt; queue[队列]<br>queue --绑定键--&gt; exchanger<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs mermaid"><br>graph LR<br>    subgraph one<br>    producer1((生产者1))<br>    producer2((生产者2))<br>    producer3((生产者3))<br>    end<br><br>producer1 --路由键--&gt; exchanger1<br>producer2 --路由键--&gt; exchanger2<br>producer3 --路由键--&gt; exchanger1<br><br>    subgraph RabbitMQ Broker<br>    exchanger1[交换机1] --&gt; queue1<br>    exchanger1[交换机1] --&gt; queue3<br>    exchanger2[交换机2] --&gt; queue2<br>    exchanger2[交换机2] --&gt; queue4<br>    end<br><br><br>queue1[队列1] --&gt; consumer1<br>queue2[队列2] --&gt; consumer2<br>queue3[队列3] --&gt; consumer1<br>queue4[队列4] --&gt; consumer1<br><br>    subgraph 消费者<br>    consumer1((消费者1))<br>    consumer2((消费者2))<br>    end<br></code></pre></td></tr></table></figure>
+
+<p>RabbitMQ Broker: 消息中间件的服务节点</p>
+<h2 id="信息交换机类型"><a href="#信息交换机类型" class="headerlink" title="信息交换机类型"></a>信息交换机类型</h2><ul>
+<li>定义</li>
+<li>优缺点</li>
+<li>适用场景</li>
+<li>如何应用</li>
+</ul>
+<h3 id="Fanout-扇形-交换机"><a href="#Fanout-扇形-交换机" class="headerlink" title="Fanout(扇形)交换机"></a>Fanout(扇形)交换机</h3><p>就像交换机一样, 广播消息</p>
+<ul>
+<li>将所有信息绑定到消息队列</li>
+<li>与该交互机绑定的, 都会收到其交货机的广播消息</li>
+</ul>
+<h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>Fanout 交换机将消息广播到与其绑定的所有队列。无视消息的路由键，适合广播消息的场景。</p>
+<h4 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h4><ul>
+<li><p>优点</p>
+<blockquote>
+<p>可以将消息广播到所有与之绑定的队列，适用于需要广播消息的场景，比如日志系统、发布订阅系统等</p>
+</blockquote>
+</li>
+<li><p>缺点</p>
+<blockquote>
+<p>不能进行精确的路由控制，不适用于需要特定路由规则的场景</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h4><p>举例:<br>例如，在一个多播聊天室中，当一个用户发送一条消息时，所有其他用户都应该接收到这条消息。在这种情况下，可以使用 Fanout 交换机将消息广播到所有与之绑定的队列中</p>
+<hr>
+<h3 id="Topic-主题-交换机"><a href="#Topic-主题-交换机" class="headerlink" title="Topic(主题)交换机"></a>Topic(主题)交换机</h3><h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><p>Topic 交换机根据消息的路由键将消息路由到与之匹配的队列中。路由键可以使用通配符进行匹配，适合处理一对多的消息发送场景。</p>
+<h4 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h4><ul>
+<li>优点<blockquote>
+<p>可以根据消息的路由键进行精确的路由控制，只将消息发送到与之完全匹配的队列中，适用于需要一对一的消息发送场景</p>
+</blockquote>
+</li>
+<li>缺点<blockquote>
+<p>路由键只能使用固定的字符串，不支持通配符匹配</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="适用场景-1"><a href="#适用场景-1" class="headerlink" title="适用场景"></a>适用场景</h4><p>举例:<br>例如，在一个电商系统中，当一个用户购买一件商品时，需要根据商品的类别和品牌将订单信息发送到特定的队列中，以便相关的部门进行处理。在这种情况下，可以使用 Topic 交换机根据商品的类别和品牌进行多重路由控制，将订单消息发送到特定的队列中</p>
+<hr>
+<h3 id="Direct-直连-交换机"><a href="#Direct-直连-交换机" class="headerlink" title="Direct(直连)交换机"></a>Direct(直连)交换机</h3><h4 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h4><p>Direct 交换机根据消息的路由键将消息路由到与之完全匹配的队列中。适合处理一对一的消息发送场景</p>
+<h4 id="优缺点-2"><a href="#优缺点-2" class="headerlink" title="优缺点"></a>优缺点</h4><ul>
+<li>优点<blockquote>
+<p>支持通配符匹配路由键，可以根据消息的路由键将消息路由到多个队列中，适用于需要一对多的消息发送场景</p>
+</blockquote>
+</li>
+<li>缺点<blockquote>
+<p>相比直连交换机，Topic 交换机在处理消息时需要进行额外的匹配操作，处理效率略低</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="适用场景-2"><a href="#适用场景-2" class="headerlink" title="适用场景"></a>适用场景</h4><p>举例:<br>例如，在一个订单系统中，当一个订单创建时，需要将订单信息发送到一个特定的队列中，以便其他系统可以及时地处理这个订单。在这种情况下，可以使用 Direct 交换机根据订单号进行路由控制，将订单消息发送到特定的队列中</p>
+<hr>
+<h2 id="路由键"><a href="#路由键" class="headerlink" title="路由键"></a>路由键</h2><p>在 RabbitMQ 中，路由键是一个字符串，用于描述消息的路由信息。生产者在发送消息时可以指定路由键，消费者在绑定队列时也可以指定路由键。</p>
+<p>路由键与交换机的绑定方式不同，对于 Fanout 交换机来说，路由键会被忽略，消息会被广播到所有绑定到交换机上的队列中；对于 Direct 交换机和 Topic 交换机来说，路由键决定了消息被路由到哪个队列中。</p>
+<p>在 Direct 交换机和 Topic 交换机中，队列和交换机之间的绑定都是带有一个路由键的，当生产者发送消息时，需要指定消息的路由键，交换机会根据路由键将消息发送到对应的队列中。</p>
+<p>在 Topic 交换机中，路由键可以使用通配符来进行匹配。通配符有两种，分别是 *（匹配一个单词）和 #（匹配零个或多个单词），可以使用它们来实现更加灵活的路由控制。</p>
+<p>sg.#</p>
+<p>sg.slx<br>sg.xh</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/C-language/c_language/">← Next C 语言</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/DataBase/db_mariadb/">MariaDB Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://pic.voiblog.top/i/2023/09/65069e5b50c1f.png" alt="Logo"></a><h1 id="Dr"><a target="_blank" rel="noopener" href="https://www.voiblog.top/">Voilone</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-text">工作流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%B1%BB%E5%9E%8B"><span class="toc-text">信息交换机类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Fanout-%E6%89%87%E5%BD%A2-%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="toc-text">Fanout(扇形)交换机</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">优缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">适用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Topic-%E4%B8%BB%E9%A2%98-%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="toc-text">Topic(主题)交换机</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9-1"><span class="toc-text">优缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="toc-text">适用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Direct-%E7%9B%B4%E8%BF%9E-%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="toc-text">Direct(直连)交换机</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9-2"><span class="toc-text">优缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="toc-text">适用场景</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E9%94%AE"><span class="toc-text">路由键</span></a></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">蜀ICP备2022023623号-1</a></nobr><br><nobr><span class="icp-title">©</span><span class="icp-content">2022</span></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>shell 正则表达式 | 📔My_note</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/atom-one-dark-reasonable.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('/');
+ --light-background: url('/');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@8.13.5/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="//unpkg.com/@highlightjs/cdn-assets@11.4.0/highlight.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>shell 正则表达式</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2022-11-23T09:02:36.815Z" id="date"> 2022-11-23</time></div></span><br><span>Last Update: <div class="control"><time datetime="2022-12-05T01:40:12.758Z" id="updated"> 2022-12-05</time></div></span></div></div><hr><div id="post-content"><h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>该笔记基于 <code>shell</code><br>正则表达式是一种字符模式, 用于查找过程中匹配指定字符<br>[toc]</p>
+<hr>
+<h2 id="初次使用"><a href="#初次使用" class="headerlink" title="初次使用"></a>初次使用</h2><p>例:<br>匹配 <code>^a</code> 以 a 开头的字符</p>
+<p>正则表达式可以被 <code>vim</code>, <code>sed</code>, <code>awk</code>, <code>grep</code> 调用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">双括号用于放正则表达式</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">=~ 是正则表达式的开始(在判断语句中)</span><br> if [[ $test =~ ^[0-9]+$  ]]    #+$ 以一个或多个数字结尾<br> then<br>    echo &quot;正确&quot;<br> else<br>    echo &quot;错误&quot;<br>fi<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="基本正则表达式元字符"><a href="#基本正则表达式元字符" class="headerlink" title="基本正则表达式元字符"></a>基本正则表达式元字符</h2><p>定义: 用于表达不同于字面本身含义的字符</p>
+<blockquote>
+<p>被匹配文本示例: “ this is a great day.”</p>
+</blockquote>
+<h4 id="行首定位符"><a href="#行首定位符" class="headerlink" title="^ 行首定位符"></a><code>^</code> 行首定位符</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">grep ^this<br></code></pre></td></tr></table></figure>
+
+<h4 id="行尾定位符"><a href="#行尾定位符" class="headerlink" title="$ 行尾定位符"></a><code>$</code> 行尾定位符</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">grep day$<br></code></pre></td></tr></table></figure>
+
+<h4 id="匹配任意单个字符"><a href="#匹配任意单个字符" class="headerlink" title=". 匹配任意单个字符"></a><code>.</code> 匹配任意单个字符</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">grep d.y<br></code></pre></td></tr></table></figure>
+
+<h4 id="匹配前导符-0-到多次"><a href="#匹配前导符-0-到多次" class="headerlink" title="* 匹配前导符 0 到多次"></a><code>*</code> 匹配前导符 0 到多次</h4><p>前导符, <code>ab*</code>, b 为前导符</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">grep gre*<br></code></pre></td></tr></table></figure>
+
+<h4 id="匹配任意多个字符"><a href="#匹配任意多个字符" class="headerlink" title=".* 匹配任意多个字符"></a><code>.*</code> 匹配任意多个字符</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">grep g.*t<br></code></pre></td></tr></table></figure>
+
+<h4 id="匹配指定范围内的一个字符"><a href="#匹配指定范围内的一个字符" class="headerlink" title="[] 匹配指定范围内的一个字符"></a><code>[]</code> 匹配指定范围内的一个字符</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">grep [t]his<br></code></pre></td></tr></table></figure>
+
+<h4 id="匹配指定连续范围内的一个字符"><a href="#匹配指定连续范围内的一个字符" class="headerlink" title="[-] 匹配指定连续范围内的一个字符"></a><code>[-]</code> 匹配指定连续范围内的一个字符</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">[a-Z] = [a-zA-Z]</span><br>grep [a-z]his<br></code></pre></td></tr></table></figure>
+
+<h4 id="匹配不在指定组内的字符"><a href="#匹配不在指定组内的字符" class="headerlink" title="[ ^ ] 匹配不在指定组内的字符"></a><code>[ ^ ]</code> 匹配不在指定组内的字符</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">grep [^0-9]his<br></code></pre></td></tr></table></figure>
+
+<h4 id="转义符"><a href="#转义符" class="headerlink" title="\ 转义符"></a><code>\</code> 转义符</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">grep day\.<br></code></pre></td></tr></table></figure>
+
+<h4 id=""><a href="#" class="headerlink" title="\&lt; 词首定位符(不同于行首定位符)"></a><code>\&lt;</code> 词首定位符(不同于行首定位符)</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">grep \&lt;this<br></code></pre></td></tr></table></figure>
+
+<h4 id="词尾定位符"><a href="#词尾定位符" class="headerlink" title="\&gt; 词尾定位符"></a><code>\&gt;</code> 词尾定位符</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">grep day\&gt;<br></code></pre></td></tr></table></figure>
+
+<h4 id="匹配稍后使用的字符标签"><a href="#匹配稍后使用的字符标签" class="headerlink" title="() 匹配稍后使用的字符标签"></a><code>()</code> 匹配稍后使用的字符标签</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">例:</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">将shell脚本注释</span><br><br>:3,9 s/\(.*\)/#\1/      #\1 代表前方调用的括号<br></code></pre></td></tr></table></figure>
+
+<h4 id="前导符出现-n-次"><a href="#前导符出现-n-次" class="headerlink" title="{} 前导符出现 n 次"></a><code>&#123;&#125;</code> 前导符出现 n 次</h4><p>字符出现指定次数才匹配</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">grep  m\&#123;5\&#125;    #m出现5次<br><br>grep m\&#123;5, \&#125;   #m出现5次以上<br><br>grep m\&#123;5,10\&#125;   #m仅出现5~10次<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="扩展正则表达式元字符"><a href="#扩展正则表达式元字符" class="headerlink" title="扩展正则表达式元字符"></a>扩展正则表达式元字符</h2><p><code>egrep</code> 才能识别扩展元字符</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">egrep &lt;扩展元字符&gt;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">grep -E 等价于 egrep</span><br>grep -E<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>+</code> 匹配 1~n 个前导字符</li>
+<li><code>?</code> 匹配 0~1 个前导字符</li>
+<li><code>a|b</code> 匹配 a 或 b</li>
+<li><code>()</code> 组字符(用于组合匹配字符)<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">egrep &quot;this(is|a)&quot;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h2 id="修饰符-待完善"><a href="#修饰符-待完善" class="headerlink" title="修饰符(待完善)"></a>修饰符(待完善)</h2><hr>
+<h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">grep -v &lt;字符&gt; &lt;文件&gt;       #匹配取反<br>grep -q &lt;字符&gt; &lt;文件&gt;       #匹配静默(不显示匹配结果)<br>grep &lt;字符&gt; -R &lt;目录&gt;       #查找目录下的文件<br>grep -n                     #将行号显示出来<br><br>grep -B2    #同时显示匹配的前两行<br>     -A2    #同时显示匹配的后两行<br>     -C2    #同时显示匹配的上下两行<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="sed-流编辑器"><a href="#sed-流编辑器" class="headerlink" title="sed 流编辑器"></a>sed 流编辑器</h2><p>用于 shell 编程更改文件内容(免交互)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">sed -r      #使用正则表达式<br>sed -i      #写入文件<br></code></pre></td></tr></table></figure>
+
+<p>实例:<br>不加入-i 选项, sed 只会写入缓存空间, 文件内容不会改变.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs shell">sed -r &quot;/&lt;正则表达式&gt;/&lt;操作&gt;/&quot; &lt;文件&gt;<br>sed -r &quot;#&lt;正则表达式&gt;#&lt;操作&gt;#&quot;<br><br>sed -r &quot;/root/d&quot;  test.txt             #删除匹配的字符行, d为操作(删除)<br>sed -r &quot;3d&quot;  test.txt                  #删除第3行字符<br>sed -r &quot;3&#123;d&#125;&quot; test.txt                 # &#123;括号&#125;内可以加多个选项<br>sed -r &quot;3,6d&quot;  test.txt                #删除3~6行字符<br>sed -r &quot;d&quot;                             #删除尾行<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">替换文件字符</span><br>sed -r &quot;s/替换前/替换后/&quot;                #替换字符(只换第一个)<br>sed -r &quot;s/替换前/替换后/g&quot;               #替换字符(全局替换)<br>sed -r &quot;s/替换前/&amp;.5/&quot;                  #调用匹配的字符, 结果为匹配字符后多了个.5<br>sed &quot;s/(替换前)/\1.5/&quot;                    #同上<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">读取操作</span><br>sed -r &quot;r test.txt&quot; other.txt           #读取目标文件字符并逐行打印<br>sed -r &quot;5r test.txt&quot; other.txt          #在第5行输出指定文件字符<br>sed -r &quot;/string/r test.txt&quot; other.txt<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">写入操作</span><br>sed -r &quot;w test.txt&quot; other.txt           #other.txt的内容会传入test.txt<br>sed -r &quot;/string/w test.txt&quot; other.txt<br>...<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">追加操作</span><br>sed -r &quot;a string&quot; test.txt              #逐行追加字符<br>sed -r &#x27;$a string&#x27; test.txt             #在文件尾行传入字符<br><br>sed -r -e &lt;操作1&gt; -e &lt;操作2&gt; -e ...       #-e选项用于多重编辑<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">操作字母</th>
+<th align="center">操作</th>
+<th align="center">操作字母</th>
+<th align="center">操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">d</td>
+<td align="center">删除</td>
+<td align="center">w</td>
+<td align="center">写入(另存为)</td>
+</tr>
+<tr>
+<td align="center">i</td>
+<td align="center">插入</td>
+<td align="center">a</td>
+<td align="center">追加</td>
+</tr>
+<tr>
+<td align="center">s</td>
+<td align="center">替换</td>
+<td align="center">c</td>
+<td align="center">整行替换</td>
+</tr>
+<tr>
+<td align="center">&amp;</td>
+<td align="center">调用</td>
+<td align="center">n</td>
+<td align="center">下一行</td>
+</tr>
+<tr>
+<td align="center">r</td>
+<td align="center">读取其他文件</td>
+<td align="center">!</td>
+<td align="center">取反</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="awk-切片"><a href="#awk-切片" class="headerlink" title="awk 切片"></a>awk 切片</h2><p>awk 切片技术</p>
+<h3 id="初识-awk"><a href="#初识-awk" class="headerlink" title="初识 awk"></a>初识 awk</h3><p>行: 记录(为<code>$0</code>)<br>词: 字段(从第一个字段<code>$1</code>开始, 以此类推<code>$2</code>, <code>$3</code>, <code>$4</code>, …)<br>每过一行都会重置变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">对awk, <span class="hljs-variable">$0</span>是一行记录</span><br>awk &#x27;&#123;print $0&#125;&#x27; test.txt<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">-F 指定记录分割符(可选)</span><br>awk -F:                     #指定冒号&quot;:&quot;为记录分隔符<br></code></pre></td></tr></table></figure>
+
+<h3 id="awk-语法"><a href="#awk-语法" class="headerlink" title="awk 语法"></a>awk 语法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">常用语法</span><br>awk &lt;选项&gt; &#x27;&lt;命令&gt;&#x27; &lt;文件&gt;<br></code></pre></td></tr></table></figure>
+
+<p>awk 有三种执行时态:</p>
+<ul>
+<li>开始 <code>BEGIN&#123;&#125;</code> <strong>发生在行处理前(大小写敏感)</strong></li>
+<li>现在 <code>&#123;&#125;</code> <strong>在行处理时, 读一行执行一次</strong></li>
+<li>结束 <code>END&#123;&#125;</code> <strong>行处理后</strong></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">例:</span><br>awk &#x27;BEGIN&#123;print &quot;行处理前: &quot;&#125; &#123;print $1&#125; END&#123;print &quot;行处理后&quot;&#125;&#x27; test.txt<br></code></pre></td></tr></table></figure>
+
+<h3 id="内部变量"><a href="#内部变量" class="headerlink" title="内部变量"></a>内部变量</h3><ul>
+<li><code>FS</code> <strong>输入</strong>字段分隔符(默认为空格)</li>
+<li><code>OFS</code> <strong>输出</strong>字段分隔符</li>
+<li><code>RS</code> <strong>输入</strong>记录分隔符(默认换行符)</li>
+<li><code>FNR</code> 多文件<strong>独立</strong>编号(类似行号)</li>
+<li><code>NR</code> 多文件<strong>汇总</strong>编号</li>
+<li><code>NF</code> 字段数</li>
+<li><strong>. . . . . .</strong></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">例:</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">以冒号为输入分隔符</span><br>awk &#x27;BEGIN&#123;FS=&quot;:&quot;&#125; &#123;print $1&#125;&#x27; test.txt<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">输出分隔符(效果为插入指定的分隔符)</span><br>awk &#x27;BEGIN&#123;FS=&quot;:&quot;; OFS=&quot;666&quot;&#125; &#123;print $1,$2,$3&#125; END&#123;&#125;&#x27; test.txt<br></code></pre></td></tr></table></figure>
+
+<h3 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h3><p>print 函数</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">例:</span><br>date | awk &#x27;&#123;print &quot;当前年份: &quot; $1, &quot;\n当前月份:&quot; $2&#125;&#x27;<br></code></pre></td></tr></table></figure>
+
+<h3 id="模式-正则表达式-和动作"><a href="#模式-正则表达式-和动作" class="headerlink" title="模式(正则表达式)和动作"></a>模式(正则表达式)和动作</h3><p>awk 语句由模式和动作组成, 每一次处理都会有动作<br>模式常用正则表达式</p>
+<ul>
+<li>字符串比较</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">例:</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">正则表达式模式</span><br>awk &#x27;/&lt;正则表达式&gt;/&#x27; &lt;文件&gt;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">~ 代表字符串比较</span><br>awk &#x27;$0 ~/&lt;正则表达式&gt;/&#x27; test.txt<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>数值比较</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">与多数编程语言的比较符相似</span><br>awk &#x27;NR &lt; 10&#x27; test.txt<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">也可以进行运算</span><br>awk &#x27;&#123;NR*2 &lt; 10&#125;&#x27; test.txt<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>多条件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">例:</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">逻辑或和与(|| &amp;&amp;)</span><br>awk &#x27;~/&lt;正则表达式&gt;/ &amp;&amp; NR&lt;=5&#x27; test.txt<br>...<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">范围模式</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">从第一个, 到第二个范围查找</span><br>awk &#x27;/&lt;正则表达式&gt;/, /正则表达式/&#x27; test.txt<br></code></pre></td></tr></table></figure>
+
+<h3 id="awk-脚本编程"><a href="#awk-脚本编程" class="headerlink" title="awk 脚本编程"></a>awk 脚本编程</h3><blockquote>
+<p>变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash"><span class="hljs-string">&quot;-v&quot;</span> 调用系统变量</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">awk调用变量不需要<span class="hljs-string">&quot;$&quot;</span></span><br>awk -v &lt;引用变量&gt;<br>awk -v name=test &#x27;$1 == &lt;变量名&gt;&#x27; test.txt<br>awk &#x27;$1 ~ &quot;&#x27;&quot;$name&quot;&#x27;&quot; &#x27; test.txt           #不介意使用<br><br></code></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>判断语句</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-keyword">if</span>语句</span><br>if (&lt;条件&gt;) &#123;&lt;代码块&gt;&#125;<br>......#与C差不多<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">例:</span><br>awk &#x27;&#123;if ($1 == id) &#123;print &quot;查询成功!&quot;&#125;&#125;&#x27; test.txt<br></code></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>循环<br>有 for 和 while, 语句格式与 C 相似</p>
+</blockquote>
+<blockquote>
+<p>数组</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">定义:</span><br>&lt;数组名&gt;[下标]=&lt;值&gt;<br></code></pre></td></tr></table></figure>
+</blockquote>
+<hr>
+<h2 id="P36-待观看"><a href="#P36-待观看" class="headerlink" title="P36 待观看"></a>P36 待观看</h2><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2022/Java/java_oop/">← Next Java面向对象编程</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2022/Shell/shell_array_function/">shell 数组和函数 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://pic.voiblog.top/i/2023/09/65069e5b50c1f.png" alt="Logo"></a><h1 id="Dr"><a target="_blank" rel="noopener" href="https://www.voiblog.top/">Voilone</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E6%AC%A1%E4%BD%BF%E7%94%A8"><span class="toc-text">初次使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%83%E5%AD%97%E7%AC%A6"><span class="toc-text">基本正则表达式元字符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%8C%E9%A6%96%E5%AE%9A%E4%BD%8D%E7%AC%A6"><span class="toc-text">^ 行首定位符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%8C%E5%B0%BE%E5%AE%9A%E4%BD%8D%E7%AC%A6"><span class="toc-text">$ 行尾定位符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E4%BB%BB%E6%84%8F%E5%8D%95%E4%B8%AA%E5%AD%97%E7%AC%A6"><span class="toc-text">. 匹配任意单个字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E5%89%8D%E5%AF%BC%E7%AC%A6-0-%E5%88%B0%E5%A4%9A%E6%AC%A1"><span class="toc-text">* 匹配前导符 0 到多次</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E4%BB%BB%E6%84%8F%E5%A4%9A%E4%B8%AA%E5%AD%97%E7%AC%A6"><span class="toc-text">.* 匹配任意多个字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E6%8C%87%E5%AE%9A%E8%8C%83%E5%9B%B4%E5%86%85%E7%9A%84%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6"><span class="toc-text">[] 匹配指定范围内的一个字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E6%8C%87%E5%AE%9A%E8%BF%9E%E7%BB%AD%E8%8C%83%E5%9B%B4%E5%86%85%E7%9A%84%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6"><span class="toc-text">[-] 匹配指定连续范围内的一个字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E4%B8%8D%E5%9C%A8%E6%8C%87%E5%AE%9A%E7%BB%84%E5%86%85%E7%9A%84%E5%AD%97%E7%AC%A6"><span class="toc-text">[ ^ ] 匹配不在指定组内的字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AC%E4%B9%89%E7%AC%A6"><span class="toc-text">\ 转义符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">\&lt; 词首定位符(不同于行首定位符)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%8D%E5%B0%BE%E5%AE%9A%E4%BD%8D%E7%AC%A6"><span class="toc-text">\&gt; 词尾定位符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E7%A8%8D%E5%90%8E%E4%BD%BF%E7%94%A8%E7%9A%84%E5%AD%97%E7%AC%A6%E6%A0%87%E7%AD%BE"><span class="toc-text">() 匹配稍后使用的字符标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E5%AF%BC%E7%AC%A6%E5%87%BA%E7%8E%B0-n-%E6%AC%A1"><span class="toc-text">{} 前导符出现 n 次</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%83%E5%AD%97%E7%AC%A6"><span class="toc-text">扩展正则表达式元字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6-%E5%BE%85%E5%AE%8C%E5%96%84"><span class="toc-text">修饰符(待完善)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grep"><span class="toc-text">grep</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sed-%E6%B5%81%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-text">sed 流编辑器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awk-%E5%88%87%E7%89%87"><span class="toc-text">awk 切片</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E8%AF%86-awk"><span class="toc-text">初识 awk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#awk-%E8%AF%AD%E6%B3%95"><span class="toc-text">awk 语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-text">内部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA"><span class="toc-text">格式化输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%BC%8F-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E5%92%8C%E5%8A%A8%E4%BD%9C"><span class="toc-text">模式(正则表达式)和动作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#awk-%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B"><span class="toc-text">awk 脚本编程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P36-%E5%BE%85%E8%A7%82%E7%9C%8B"><span class="toc-text">P36 待观看</span></a></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">蜀ICP备2022023623号-1</a></nobr><br><nobr><span class="icp-title">©</span><span class="icp-content">2022</span></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
