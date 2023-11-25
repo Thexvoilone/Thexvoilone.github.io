@@ -1834,11 +1834,11 @@ main:not(.up) .search #search-header input {
     pointer-event: none;
   }
   .search-popup {
-    right: 6px;
+    right: 0;
     transform: translateX(100%);
   }
   .search-popup.open {
-    transform: translateX(0);
+    transform: translateX(-6px);
   }
   #search-header input {
     padding: 0 10px 0 0;
